@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace SpeciFire
+namespace SpeciFire.Specifications
 {
     public abstract class BinarySpec<TContext> : Spec<TContext>
     {

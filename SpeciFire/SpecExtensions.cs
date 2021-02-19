@@ -1,4 +1,6 @@
-﻿namespace SpeciFire
+﻿using SpeciFire.Specifications;
+
+namespace SpeciFire
 {
     public static class SpecExtensions
     {

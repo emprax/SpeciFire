@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace SpeciFire
+namespace SpeciFire.Specifications
 {
     public abstract class UnarySpec<TContext> : Spec<TContext>
     {
@@ -17,7 +17,7 @@ namespace SpeciFire
             var expression = this.specification.AsExpression();
             var unary = this.AsUnary(expression.Body);
 
-            return Expression.Lambda<Func<TContext, bool>>(, expression.Parameters.Single());
+            return Expression.Lambda<Func<TContext, bool>>(unary, expression.Parameters.Single());
         }
     }
 }

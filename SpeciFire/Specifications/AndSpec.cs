@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace SpeciFire
+namespace SpeciFire.Specifications
 {
     public sealed class AndSpec<TContext> : BinarySpec<TContext>
     {
