@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace SpeciFire.Rules
 {
-    public class LambdaRuleOperation<TContext, TResult> : IRuleOperation<TContext, TResult>
+    public class LambdaRuleOperation<TInput, TContext> : IRuleOperation<TInput, TContext> where TContext : class
     {
-        private readonly Func<TContext, TResult> lambda;
+        private readonly Func<TInput, TContext, Task> lambda;
 
-        public LambdaRuleOperation(Func<TContext, TResult> lambda) => this.lambda = lambda;
+        public LambdaRuleOperation(Func<TInput, TContext, Task> lambda) => this.lambda = lambda;
 
-        public TResult Execute(TContext context) => this.lambda.Invoke(context);
+        public Task Execute(TInput input, TContext context) => this.lambda.Invoke(input, context);
     }
 }

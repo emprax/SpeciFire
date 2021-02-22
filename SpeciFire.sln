@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30323.103
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpeciFire", "SpeciFire\SpeciFire.csproj", "{B53C65E8-B72D-4578-A2BE-BA307F9DE5FF}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpeciFire.DependencyInjection", "SpeciFire.DependencyInjection\SpeciFire.DependencyInjection.csproj", "{DD17F4B7-BDEC-49CE-A51C-828CF7D8C3DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeciFire.TestConsole", "SpeciFire.TestConsole\SpeciFire.TestConsole.csproj", "{DB44DB6E-32B9-42CF-9909-213236D30576}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{B53C65E8-B72D-4578-A2BE-BA307F9DE5FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B53C65E8-B72D-4578-A2BE-BA307F9DE5FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B53C65E8-B72D-4578-A2BE-BA307F9DE5FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD17F4B7-BDEC-49CE-A51C-828CF7D8C3DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD17F4B7-BDEC-49CE-A51C-828CF7D8C3DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD17F4B7-BDEC-49CE-A51C-828CF7D8C3DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD17F4B7-BDEC-49CE-A51C-828CF7D8C3DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB44DB6E-32B9-42CF-9909-213236D30576}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB44DB6E-32B9-42CF-9909-213236D30576}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB44DB6E-32B9-42CF-9909-213236D30576}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB44DB6E-32B9-42CF-9909-213236D30576}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

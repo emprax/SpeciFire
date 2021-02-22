@@ -1,7 +1,9 @@
-﻿namespace SpeciFire.Rules
+﻿using System.Threading.Tasks;
+
+namespace SpeciFire.Rules
 {
-    public interface IRuleOperation<TContext, TResult>
+    public interface IRuleOperation<TInput, TContext> where TContext : class
     {
-        TResult Execute(TContext context);
+        Task Execute(TInput input, TContext context);
     }
 }

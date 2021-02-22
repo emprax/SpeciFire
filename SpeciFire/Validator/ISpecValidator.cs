@@ -1,6 +1,6 @@
 ﻿namespace SpeciFire.Validator
 {
-    public interface IValidator<TContext>
+    public interface ISpecValidator<TContext>
     {
         bool Validate(TContext context);
     }

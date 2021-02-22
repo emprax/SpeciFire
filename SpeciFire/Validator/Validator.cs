@@ -1,17 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SpeciFire.Validator
 {
-    public class Validator<TContext> : IValidator<TContext>
+    public class Validator<TContext> : ISpecValidator<TContext>
     {
-        private readonly IReadOnlyList<ISpec<TContext>> rules;
+        private readonly IReadOnlyList<Func<ISpec<TContext>>> rules;
 
-        public Validator(IReadOnlyList<ISpec<TContext>> rules) => this.rules = rules;
+        public Validator(IReadOnlyList<Func<ISpec<TContext>>> rules) => this.rules = rules;
 
         public bool Validate(TContext context)
         {
-            return this.rules?.All(rule => rule.IsSatisfiedBy(context)) ?? true;
+            return this.rules?.All(rule => rule.Invoke().IsSatisfiedBy(context)) ?? true;
         }
     }
 }

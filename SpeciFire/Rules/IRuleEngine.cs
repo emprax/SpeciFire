@@ -1,7 +1,11 @@
-﻿namespace SpeciFire.Rules
+﻿using System.Threading.Tasks;
+
+namespace SpeciFire.Rules
 {
-    public interface IRuleEngine<TContext, TResult>
+    public interface IRuleEngine<TInput, TContext> where TContext : class
     {
-        TResult Execute(TContext context);
+        TContext Context { get; set; }
+
+        Task Execute(TInput input);
     }
 }

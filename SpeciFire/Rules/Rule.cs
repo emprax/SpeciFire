@@ -1,15 +1,15 @@
 ﻿namespace SpeciFire.Rules
 {
-    public class Rule<TContext, TResult>
+    public class Rule<TInput, TContext> where TContext : class
     {
-        public Rule(ISpec<TContext> predicate, IRuleOperation<TContext, TResult> operation)
+        public Rule(ISpec<TInput> predicate, IRuleOperation<TInput, TContext> operation)
         {
             this.Predicate = predicate;
             this.Operation = operation;
         }
 
-        ISpec<TContext> Predicate { get; }
+        public ISpec<TInput> Predicate { get; }
 
-        IRuleOperation<TContext, TResult> Operation { get; }
+        public IRuleOperation<TInput, TContext> Operation { get; }
     }
 }
