@@ -1,4 +1,4 @@
-# <img src=".\docs\SpeciFire(logo).png" style="zoom:5%;" /> SpeciFire
+# <img src=".\docs\SpeciFire(logo).png" style="zoom:1%;" /> SpeciFire
 
 ![Nuget](https://img.shields.io/nuget/v/SpeciFire?color=green&style=plastic)
 
