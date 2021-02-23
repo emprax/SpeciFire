@@ -24,7 +24,7 @@ namespace SpeciFire.DependencyInjection
         public static IServiceCollection AddSpecValidator<TContext>(this IServiceCollection services, Action<IValidatorBuilder<TContext>, IServiceProvider> configuration)
         {
             return services
-                .AddTransient<ISpecValidator<TContext>>(provider => new Validator<TContext>(provider.GetRequiredService<ValidatorCore<TContext>>().Specs))
+                .AddTransient<ISpecValidator<TContext>>(provider => new SpecValidator<TContext>(provider.GetRequiredService<ValidatorCore<TContext>>().Specs))
                 .AddSingleton(provider => 
                 {
                     var builder = new ValidatorBuilder<TContext>();

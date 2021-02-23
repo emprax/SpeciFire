@@ -4,6 +4,6 @@
     {
         ISpecValidator<TContext> WithAggregationType(AggregationType<TContext> type);
 
-        bool Validate(TContext context);
+        ValidationResult Validate(TContext context);
     }
 }

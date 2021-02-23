@@ -22,8 +22,11 @@ namespace SpeciFire.TestConsole.Validator
             var validator = provider.GetRequiredService<ISpecValidator<string>>();
             foreach (var value in Strings())
             {
-                var result = validator.Validate(value);
-                Console.WriteLine($"Value '{value}' was '{(result ? "valid" : "invalid")}'.");
+                var result = validator
+                    .WithAggregationType(AggregationType<string>.All)
+                    .Validate(value);
+
+                Console.WriteLine($"Value '{value}' was '{result}'.");
             }
         }
 
@@ -31,7 +34,7 @@ namespace SpeciFire.TestConsole.Validator
         {
             yield return "http://test.test";
             yield return "http://tests.test";
-            yield return "hello";
+            yield return " - he)llo( ";
         }
     }
 }
