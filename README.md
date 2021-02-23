@@ -47,7 +47,7 @@ public class CrossedThresholdSpecification : Spec<float>
     
     // Note: (value => value > this.threshold) is an expression case, so the notation below might seem a bit of. 
     // Howeverthe the short-hand version of a one-line method is combined with the expression notation.
-	public override Expression<Func<float, bool>> AsExpression() => value => value > this.threshold;
+    public override Expression<Func<float, bool>> AsExpression() => value => value > this.threshold;
 }
 
 
@@ -90,7 +90,7 @@ public class CrossedThresholdOperation : IRuleOperation<float, Record>
     
     public CrossedThresholdOperation(Logger logger) => this.logger = logger;
     
-	public Task Execute(float input, Record context) 
+    public Task Execute(float input, Record context) 
     {
         context.Total += input;
         
@@ -116,17 +116,17 @@ var provider = new ServiceCollection()
             .AddRule<CrossedThresholdOperation>(value => value > 10.0f)
             // By type arguments. Note: DI now has to know the threshold. Possible solution: IOptions<T> or object/provider.
             .AddRule(typeof(CrossedThresholdSpecification), typeof(CrossedThresholdOperation))
-			// By fully implemented operation + specification.            
+	    // By fully implemented operation + specification.            
             .AddRule(new CrossedThresholdSpecification(10.0f), new CrossedThresholdOperation(new Logger()))
-			// By implementation of operation and expression for specification. Expression will be stored in ExpressionSpec<T>.
+	    // By implementation of operation and expression for specification. Expression will be stored in ExpressionSpec<T>.
             .AddRule(value => value > 10.0f, new CrossedThresholdOperation(new Logger()))
-			// By type value for operation and expression for specification. Expression will be stored in ExpressionSpec<T>.
+	    // By type value for operation and expression for specification. Expression will be stored in ExpressionSpec<T>.
             .AddRule(value => value > 10.0f, typeof(CrossedThresholdOperation))
             // As above, however, these rules will not implement a specification and will therefore be executed nonetheless.
             .AddRuleWithoutPredicate<CrossedThresholdOperation>()
             .AddRuleWithoutPredicate(typeof(CrossedThresholdOperation))
             .AddRuleWithoutPredicate(new CrossedThresholdOperation())
-			// As above, however, definitions for full rules. 
+	    // As above, however, definitions for full rules. 
             .AddRule<CrossedThresholdRule>()
             .AddRule(typeof(CrossedThresholdRule))
             .AddRule(new Rule<float, Record>(new CrossedThresholdSpecification(10.0f), new CrossedThresholdOperation()));
