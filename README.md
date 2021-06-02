@@ -1,11 +1,8 @@
 # <img src=".\docs\SpeciFire(logo).png" width="120" height="134" /> SpeciFire
 
-![Nuget](https://img.shields.io/nuget/v/SpeciFire?color=green&style=plastic)
-
 NuGet package pages:
-
-- [SpeciFire](https://www.nuget.org/packages/SpeciFire/)
-- [SpeciFire.DependencyInjection](https://www.nuget.org/packages/SpeciFire.DependencyInjection/)
+- [SpeciFire](https://www.nuget.org/packages/SpeciFire/) ![Nuget](https://img.shields.io/nuget/v/SpeciFire?color=green&style=plastic)
+- [SpeciFire.DependencyInjection](https://www.nuget.org/packages/SpeciFire.DependencyInjection/) ![Nuget](https://img.shields.io/nuget/v/SpeciFire.DependencyInjection?color=green&style=plastic)
 
 ## Introduction & Background
 
