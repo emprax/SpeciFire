@@ -2,14 +2,13 @@
 using System.Linq.Expressions;
 using SpeciFire.Specifications;
 
-namespace SpeciFire.Validator
+namespace SpeciFire.DependencyInjection.Validator.Factories;
+
+internal class PredicateSpecFactory<TContext> : ISpecFactory<TContext>
 {
-    internal class PredicateSpecFactory<TContext> : ISpecFactory<TContext>
-    {
-        private readonly Expression<Func<TContext, bool>> predicate;
+    private readonly Expression<Func<TContext, bool>> predicate;
 
-        internal PredicateSpecFactory(Expression<Func<TContext, bool>> predicate) => this.predicate = predicate;
+    internal PredicateSpecFactory(Expression<Func<TContext, bool>> predicate) => this.predicate = predicate;
 
-        public ISpec<TContext> Create(IServiceProvider provider) => new ExpressionSpec<TContext>(this.predicate);
-    }
+    public ISpec<TContext> Create(IServiceProvider provider) => new ExpressionSpec<TContext>(this.predicate);
 }

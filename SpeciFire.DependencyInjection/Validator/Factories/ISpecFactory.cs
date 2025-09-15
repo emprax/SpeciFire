@@ -1,9 +1,8 @@
 ﻿using System;
 
-namespace SpeciFire.Validator
+namespace SpeciFire.DependencyInjection.Validator.Factories;
+
+internal interface ISpecFactory<TContext>
 {
-    internal interface ISpecFactory<TContext>
-    {
-        ISpec<TContext> Create(IServiceProvider provider);
-    }
+    ISpec<TContext> Create(IServiceProvider provider);
 }

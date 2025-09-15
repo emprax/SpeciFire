@@ -1,50 +1,51 @@
-﻿using System;
+﻿using SpeciFire.DependencyInjection.Validator.Factories;
+using SpeciFire.Validator;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace SpeciFire.Validator
+namespace SpeciFire.DependencyInjection.Validator;
+
+internal sealed class ValidatorBuilder<TContext> : IValidatorBuilder<TContext>
 {
-    internal sealed class ValidatorBuilder<TContext> : IValidatorBuilder<TContext>
+    private IList<ISpecFactory<TContext>> specifications;
+
+    internal ValidatorBuilder() => this.specifications = new List<ISpecFactory<TContext>>();
+
+    public IValidatorBuilder<TContext> With<TSpec>() where TSpec : class, ISpec<TContext>
     {
-        private IList<ISpecFactory<TContext>> specifications;
+        this.specifications.Add(new TypeSpecFactory<TContext>(typeof(TSpec)));
+        return this;
+    }
 
-        internal ValidatorBuilder() => this.specifications = new List<ISpecFactory<TContext>>();
-
-        public IValidatorBuilder<TContext> With<TSpec>() where TSpec : class, ISpec<TContext>
+    public IValidatorBuilder<TContext> With(Type type)
+    {
+        if (!(type?.IsAssignableFrom(typeof(ISpec<TContext>)) ?? false))
         {
-            this.specifications.Add(new TypeSpecFactory<TContext>(typeof(TSpec)));
-            return this;
+            throw new InvalidOperationException($"Type provided type '{type?.Name}' is not assignable from ISpec<{nameof(TContext)}>.");
         }
 
-        public IValidatorBuilder<TContext> With(Type type)
-        {
-            if (!(type?.IsAssignableFrom(typeof(ISpec<TContext>)) ?? false))
-            {
-                throw new InvalidOperationException($"Type provided type '{type?.Name}' is not assignable from ISpec<{nameof(TContext)}>.");
-            }
+        this.specifications.Add(new TypeSpecFactory<TContext>(type));
+        return this;
+    }
 
-            this.specifications.Add(new TypeSpecFactory<TContext>(type));
-            return this;
-        }
+    public IValidatorBuilder<TContext> With(Expression<Func<TContext, bool>> predicate)
+    {
+        this.specifications.Add(new PredicateSpecFactory<TContext>(predicate));
+        return this;
+    }
 
-        public IValidatorBuilder<TContext> With(Expression<Func<TContext, bool>> predicate)
-        {
-            this.specifications.Add(new PredicateSpecFactory<TContext>(predicate));
-            return this;
-        }
+    public IValidatorBuilder<TContext> With(ISpec<TContext> spec)
+    {
+        this.specifications.Add(new SpecFactory<TContext>(spec));
+        return this;
+    }
 
-        public IValidatorBuilder<TContext> With(ISpec<TContext> spec)
-        {
-            this.specifications.Add(new SpecFactory<TContext>(spec));
-            return this;
-        }
-
-        internal IReadOnlyList<Func<ISpec<TContext>>> Build(IServiceProvider provider)
-        {
-            return this.specifications
-                .Select(spec => new Func<ISpec<TContext>>(() => spec.Create(provider)))
-                .ToList();
-        }
+    internal IReadOnlyList<Func<ISpec<TContext>>> Build(IServiceProvider provider)
+    {
+        return this.specifications
+            .Select(spec => new Func<ISpec<TContext>>(() => spec.Create(provider)))
+            .ToList();
     }
 }

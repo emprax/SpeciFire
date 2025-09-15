@@ -1,13 +1,12 @@
 ﻿using System;
 
-namespace SpeciFire.Validator
+namespace SpeciFire.DependencyInjection.Validator.Factories;
+
+internal class SpecFactory<TContext> : ISpecFactory<TContext>
 {
-    internal class SpecFactory<TContext> : ISpecFactory<TContext>
-    {
-        private readonly ISpec<TContext> spec;
+    private readonly ISpec<TContext> spec;
 
-        internal SpecFactory(ISpec<TContext> spec) => this.spec = spec;
+    internal SpecFactory(ISpec<TContext> spec) => this.spec = spec;
 
-        public ISpec<TContext> Create(IServiceProvider provider) => this.spec;
-    }
+    public ISpec<TContext> Create(IServiceProvider provider) => this.spec;
 }

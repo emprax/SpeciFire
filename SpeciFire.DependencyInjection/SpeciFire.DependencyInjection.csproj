@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net50</TargetFrameworks>
+    <TargetFrameworks>net9.0</TargetFrameworks>
     <Description>Dependency injection extension for SpeciFire. SpeciFire implements the specification pattern and extends this to the rules pattern and validation pattern, both of them available in this package.</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/emprax/SpeciFire</PackageProjectUrl>
@@ -9,7 +9,7 @@
     <RepositoryUrl>https://github.com/emprax/SpeciFire</RepositoryUrl>
     <PackageTags>specification, specification pattern, design patterns, rules, rules engine, rules pattern, validation, validation pattern</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.0.1</Version>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.9" />
   </ItemGroup>
 
   <ItemGroup>

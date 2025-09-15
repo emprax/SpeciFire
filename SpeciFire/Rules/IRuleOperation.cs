@@ -1,9 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace SpeciFire.Rules
+namespace SpeciFire.Rules;
+
+public interface IRuleOperation<TInput, TContext> where TContext : class
 {
-    public interface IRuleOperation<TInput, TContext> where TContext : class
-    {
-        Task Execute(TInput input, TContext context);
-    }
+    Task Execute(TInput input, TContext context);
 }

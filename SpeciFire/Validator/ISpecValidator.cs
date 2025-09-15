@@ -1,9 +1,8 @@
-﻿namespace SpeciFire.Validator
-{
-    public interface ISpecValidator<TContext>
-    {
-        ISpecValidator<TContext> WithAggregationType(AggregationType<TContext> type);
+﻿namespace SpeciFire.Validator;
 
-        ValidationResult Validate(TContext context);
-    }
+public interface ISpecValidator<TContext>
+{
+    ISpecValidator<TContext> WithAggregationType(AggregationType<TContext> type);
+
+    ValidationResult Validate(TContext context);
 }

@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace SpeciFire.Specifications
+namespace SpeciFire.Specifications;
+
+public class ExpressionSpec<TContext> : Spec<TContext>
 {
-    public class ExpressionSpec<TContext> : Spec<TContext>
-    {
-        private readonly Expression<Func<TContext, bool>> expression;
+    private readonly Expression<Func<TContext, bool>> expression;
 
-        public ExpressionSpec(Expression<Func<TContext, bool>> expression) => this.expression = expression;
+    public ExpressionSpec(Expression<Func<TContext, bool>> expression) => this.expression = expression;
 
-        public override Expression<Func<TContext, bool>> AsExpression() => this.expression;
-    }
+    public override Expression<Func<TContext, bool>> AsExpression() => this.expression;
 }

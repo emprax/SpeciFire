@@ -1,20 +1,19 @@
 ﻿using System;
 
-namespace SpeciFire.TestConsole.Rules
+namespace SpeciFire.TestConsole.Rules;
+
+public class Customer
 {
-    public class Customer
+    public Customer(string name, DateTime birthday, bool hasAccount)
     {
-        public Customer(string name, DateTime birthday, bool hasAccount)
-        {
-            this.Name = name;
-            this.Birthday = birthday;
-            this.HasAccount = hasAccount;
-        }
-
-        public string Name { get; set; }
-
-        public DateTime Birthday { get; set; }
-
-        public bool HasAccount { get; set; }
+        this.Name = name;
+        this.Birthday = birthday;
+        this.HasAccount = hasAccount;
     }
+
+    public string Name { get; set; }
+
+    public DateTime Birthday { get; set; }
+
+    public bool HasAccount { get; set; }
 }

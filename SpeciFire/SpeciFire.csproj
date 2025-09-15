@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net50</TargetFrameworks>
+    <TargetFrameworks>net9.0</TargetFrameworks>
     <Description>SpeciFire implements the specification pattern and extends this to the rules pattern and validation pattern, both of them available in this package.</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/emprax/SpeciFire</PackageProjectUrl>
@@ -10,7 +10,7 @@
     <PackageTags>specification, specification pattern, design patterns, rules, rules engine, rules pattern, validation, validation pattern</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>1.0.1</Version>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

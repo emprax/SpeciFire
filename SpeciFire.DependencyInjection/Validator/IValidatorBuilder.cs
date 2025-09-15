@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace SpeciFire.Validator
+namespace SpeciFire.DependencyInjection.Validator;
+
+public interface IValidatorBuilder<TContext>
 {
-    public interface IValidatorBuilder<TContext>
-    {
-        IValidatorBuilder<TContext> With<TSpec>() where TSpec : class, ISpec<TContext>;
+    IValidatorBuilder<TContext> With<TSpec>() where TSpec : class, ISpec<TContext>;
 
-        IValidatorBuilder<TContext> With(ISpec<TContext> spec);
+    IValidatorBuilder<TContext> With(ISpec<TContext> spec);
 
-        IValidatorBuilder<TContext> With(Expression<Func<TContext, bool>> predicate);
-    }
+    IValidatorBuilder<TContext> With(Expression<Func<TContext, bool>> predicate);
 }
